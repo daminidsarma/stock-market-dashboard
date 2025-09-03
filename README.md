@@ -54,17 +54,10 @@ Run:
 bash
 Copy code
 streamlit run app.py
+
 🛠️ Tech Stack
 Streamlit, Plotly
 
 pandas, numpy, pandas_ta
 
 yfinance, python-dotenv
-
-🌟 Roadmap
-Forecasting (Prophet / statsmodels)
-
-Event overlays (earnings/dividends)
-
-Portfolio allocation what-ifs (equal-weight vs. CAPM)
-
