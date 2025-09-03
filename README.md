@@ -18,7 +18,7 @@ Built with **Streamlit + Plotly + yfinance**, with technical indicators, resampl
 
 ## 🧱 Project Structure
 stock-market-dashboard/
-│── app.py # Streamlit app
+│── Dashboard.py # Streamlit app
 │── requirements.txt # Dependencies
 │── .env.example # Sample secrets file
 │── modules/
