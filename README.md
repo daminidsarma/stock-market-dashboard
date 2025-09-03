@@ -1,63 +1,71 @@
-# 📈 Stock Market Time Series Analysis Dashboard
+# 📈 Tech Stock Analysis Dashboard (Streamlit)
 
-Interactive dashboard for **exploring, analyzing, and visualizing stock time series**.  
-Built with **Streamlit + Plotly + yfinance**, with technical indicators, resampling, and basic portfolio backtesting.
+A lightweight dashboard to explore **AAPL, AMZN, GOOG, MSFT** price data:
+- Closing price over time
+- Moving Averages (10/20/50)
+- Daily returns (%)
+- Resampled average close (Monthly / Quarterly / Yearly)
+- Correlation heatmap across the four stocks
+
+> Built with **Streamlit, Plotly, pandas, NumPy, seaborn, Matplotlib**.
 
 ---
 
 ## 🚀 Features
-- 🔎 **Ticker search & multi-select** (e.g., TCS.NS, AAPL, BTC-USD)
-- ⏱️ **Date range & interval** controls (1d/1wk/1mo, intraday where supported)
-- 📊 **Interactive charts**: candlesticks, OHLC, volume, line
-- 🧠 **Indicators**: SMA/EMA, RSI, MACD, Bollinger Bands (via `pandas_ta`)
-- 🧮 **Returns & risk**: cumulative/rolling returns, drawdown, Sharpe (basic)
-- 🧾 **Download**: export filtered data to CSV; save charts as HTML/PNG
-- ⚡ Caching for faster reloads; graceful fallback if API rate-limits
+
+1) **Closing Prices**  
+Interactive line chart of the selected company’s closing price vs. date.
+
+2) **Moving Averages (10/20/50)**  
+Overlays 10/20/50-day rolling means on closing price.
+
+3) **Daily Returns (%)**  
+Day-over-day percentage changes in closing price.
+
+4) **Resampling**  
+Aggregate average closing prices at **Monthly / Quarterly / Yearly** frequency.
+
+5) **Correlation Heatmap**  
+Correlation matrix of closing prices for AAPL/AMZN/GOOG/MSFT.
 
 ---
 
-## 🧱 Project Structure
+## 📂 Project Structure
+
 stock-market-dashboard/
 │── Dashboard.py # Streamlit app
-│── requirements.txt # Dependencies
-│── .env.example # Sample secrets file
-│── modules/
-│ ├── data.py # yfinance fetch, caching, resampling
-│ ├── indicators.py # pandas_ta wrappers
-│ └── metrics.py # returns, drawdown, Sharpe, etc.
-│── assets/ # screenshots, logos
-│── data/ # optional local CSV cache (gitignored)
+│── Stock_Price_Analysis.ipynb # Notebook (EDA / experiments)
+│── data/ # Put your CSVs here (AAPL_data.csv, AMZN_data.csv, ...)
+│── requirements.txt
+│── .gitignore
 │── README.md
 
 yaml
 Copy code
 
+> If your CSVs are currently referenced by absolute Windows paths, switch to relative paths (e.g., `data/AAPL_data.csv`) in `Dashboard.py`.
+
 ---
 
-## ⚙️ Setup
+## ⚙️ Setup & Run
 
 ```bash
 git clone https://github.com/daminidsarma/stock-market-dashboard.git
 cd stock-market-dashboard
 
+# (optional) create a virtual environment
 python -m venv venv
 # Windows
 venv\Scripts\activate
-# Mac/Linux
+# macOS/Linux
 # source venv/bin/activate
 
 pip install -r requirements.txt
-Optional: create .env (copy from .env.example) if you later add paid data sources (Alpha Vantage, Finnhub, etc.).
 
-Run:
+# Place CSVs under ./data:
+#   data/AAPL_data.csv
+#   data/AMZN_data.csv
+#   data/GOOG_data.csv
+#   data/MSFT_data.csv
 
-bash
-Copy code
-streamlit run app.py
-
-🛠️ Tech Stack
-Streamlit, Plotly
-
-pandas, numpy, pandas_ta
-
-yfinance, python-dotenv
+streamlit run Dashboard.py
